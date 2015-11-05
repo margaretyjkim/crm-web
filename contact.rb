@@ -27,6 +27,7 @@ class Contact
 		new_contact = Contact.new(first_name, last_name, email, notes) #same thing as new_contact = new(first_name, last_name, options)
 
 		@@contacts << new_contact
+		return new_contact
 	end
 
 	def self.all #class method
@@ -52,13 +53,34 @@ class Contact
 	def self.display_attribute(attribute)
 		list = []
 		@@contacts.each do |contact|
-			list << contact.send(attribute)
+				if attribute == "first_name"
+				if value == contact.first_name
+					list << contact
+				end
+			elsif attribute == "last_name"
+				if value == contact.last_name
+					list << contact
+				end
+			elsif attribute == "email"
+				if value == contact.email
+					list << contact
+				end
+			elsif attribute == "notes"
+				if value == contact.notes
+					list << contact
+				end
+			end
 		end
 		return list
 	end
 
-	def self.delete_contact(user_specified_id)
-		@@contacts.delete_if { |contact| contact.id == user_specified_id }
+	def delete_contact
+		@@contacts.delete_if { |contact| contact.id == self.id }
+	end
+
+	def self.delete_all
+		@@contacts = []
+		@@id = 1
 	end
 
 	# This a more advanced way of updating
