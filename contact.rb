@@ -3,7 +3,7 @@ class Contact
 	attr_accessor :first_name, :last_name, :email, :notes
 	#CLASS VARIABLE = DEFINE IN THE WHOLE CONTACTS
 	@@contacts = []
-	@@id = 1
+	@@id = 1000
 	# attr_accessor creates these getter and setter
 	# GETTER
 	# def first_name
